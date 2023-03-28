@@ -1,52 +1,22 @@
-import React, { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import Input from './Input';
-import Button from './Button';
-import Signup from './Signup';
+import React from 'react';
+import CustomInput from './Input';
+import CustomButton from './CustomButton';
+import { Form } from 'react-bootstrap';
 
-const SignupForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(`Email: ${email}, Password: ${password}, Confirm Password: ${confirmPassword}`);
-    // you can add your signup logic here
+const Signup = ({ onSignup, onInputChange, name, email, password }) => {
+  const handleSignup = (e) => {
+    e.preventDefault();
+    onSignup();
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <form onSubmit={handleSubmit}>
-            <Input
-              label="Email address"
-              type="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              label="Password"
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <Input
-              label="Confirm Password"
-              type="password"
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <Button text="Submit" />
-          </form>
-        </Col>
-      </Row>
-    </Container>
+    <Form onSubmit={handleSignup}>
+      <CustomInput label="Name" type="text" placeholder="Enter name" value={name} onChange={onInputChange} />
+      <CustomInput label="Email" type="email" placeholder="Enter email" value={email} onChange={onInputChange} />
+      <CustomInput label="Password" type="password" placeholder="Enter password" value={password} onChange={onInputChange} />
+      <CustomButton variant="primary" text="Signup" onClick={handleSignup} />
+    </Form>
   );
 };
 
-export default SignupForm;
+export default Signup;
