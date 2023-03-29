@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomInput from './Input';
-import CustomButton from './CustomButton';
+import CustomButton from './Button';
 import { Form } from 'react-bootstrap';
 
 const Signup = ({ onSignup, onInputChange, name, email, password }) => {
