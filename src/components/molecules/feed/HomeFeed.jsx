@@ -1,39 +1,18 @@
-import React from "react";
-import { Card, Button } from "react-bootstrap";
-import "./feed.css";
+import React from 'react'
+import HomeFeedCustom from '../../reusable/HomeFeedCustom'
+
 const HomeFeed = () => {
   return (
-    <div className="my-feed">
-      <Card className="my-card">
-        <Card.Header>
-          <img
-            src="https://picsum.photos/50"
-            alt="User avatar"
-            className="my-avatar"
-          />
-          <div>
-            <h5 className="my-name">John Doe</h5>
-            <p className="my-timestamp">2 hours ago</p>
-          </div>
-        </Card.Header>
-        <Card.Body>
-          <p className="my-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            vehicula libero ac magna tristique bibendum. In quis erat eget
-            libero rutrum egestas.
-          </p>
-          <img
-            src="https://picsum.photos/600/400"
-            alt="Post image"
-            className="my-image"
-          />
-          <Button variant="primary" className="my-like-button">
-            Like
-          </Button>
-        </Card.Body>
-      </Card>
+    <div className="d-flex justify-content-center">
+      <HomeFeedCustom
+        name="John Doe"
+        avatarSrc="https://picsum.photos/50"
+        content="Lorem ipsum dolor sit amet,"
+        imageSrc="https://picsum.photos/600/400"
+        isNew={true}
+      />
     </div>
-  );
-};
+  )
+}
 
-export default HomeFeed;
+export default HomeFeed

@@ -1,37 +1,50 @@
-import React, { useState } from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
-import './login.css';
+import React, { useState } from "react";
+import { Container, Form} from "react-bootstrap";
+import EmailInputField from "../../reusable/EmailInputField";
+import PasswordInputField from "../../reusable/PasswordInputField";
+import CustomButton from "../../reusable/CustomButton";
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you can add your login logic, such as calling an API or checking against a database
-    console.log(`Logging in with email: ${email} and password: ${password}`);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+
+
   return (
-    <Container className="login-container">
-      <Form onSubmit={handleSubmit}>
-        <h1 className="login-header">Login</h1>
-        <Form.Group controlId="formEmail">
-          <Form.Label className="form-label">Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </Form.Group>
-
-        <Form.Group controlId="formPassword">
-          <Form.Label className="form-label">Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </Form.Group>
-
-        <Button variant="primary" type="submit" className="login-button">
-          Login
-        </Button>
+    <Container className="d-flex justify-content-center align-items-center vh-100">
+      <Form className="p-5">
+        <h1 className="text-center mb-4">Login</h1>
+        <EmailInputField
+          controlId="formEmail"
+          label="Email address"
+          value={email}
+          onChange={handleEmailChange}
+          style={{ width: "300px" }}
+        />
+        <PasswordInputField
+          controlId="formPassword"
+          label="Password"
+          value={password}
+          onChange={handlePasswordChange}
+          style={{ width: "300px" }}
+        />
+        <div className="mt-4">
+          <CustomButton
+            text="Login"
+            variant="primary"
+          />
+        </div>
       </Form>
     </Container>
   );
-}
+};
 
 export default Login;
